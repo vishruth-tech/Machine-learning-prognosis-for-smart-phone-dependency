@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Smartphone Addiction Prediction Using Machine Learning</title>
+  <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+   
+
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../static/css/prediction.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../static/css/responsive.css" rel="stylesheet" />
+  <style>
+            body {
+    background-color: #222;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 20px;
+  }
+                  
+            
+    h1 {
+        color:#141313;
+    }
+    td{
+color: #f321f3;
+}
+</style>
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <span>
+            Prediction of Smart Phone Addiction
+
+          </span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+
+              
+
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{url_for('index')}}">Home</a>
+                </li>
+            
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('upload')}}">Upload</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('prediction')}}">Prediction</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('performance')}}">Performance Analysis</a>
+                </li>
+              </ul>
+              <!-- Icon on the corner -->
+              
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <style>
+    h1 {
+      color: #ffffff;
+    }
+
+    td {
+      color: #f321f3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #f2f2f2;
+      color: #333;
+      font-weight: bold;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+         
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <div>
+                      <h1>
+                   
+                        <span>
+                          Prediction of Smart Phone Addiction
+
+                        </span>
+                      </h1>
+          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- about section -->
+
+  
+  <!-- end about section -->
+  <div class="body_bg layout_padding">
+
+    <!-- service section -->
+
+    <section class="service_section ">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Prediction of Smart Phone Addiction
+          </h2>
+        </div>
+      </div>
+       
+      <form class="mu-reservation-form mx-auto" action="{{ url_for('predict') }}" method="POST">
+        <div class="row">
+            <!-- Field 1 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="gender" style="color: white;">Gender:</label>
+                    <select class="form-control" name="Gender" id="gender">
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                        <option value="2">Others</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 2 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you use your phone to click pictures of class notes?</label>
+                    <select class="form-control" name="pictures_of_notes">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 3 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you buy books/access books from your mobile?</label>
+                    <select class="form-control" name="buy_books">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 4 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">When your phone's battery dies out, do you run for the charger?</label>
+                    <select class="form-control" name="run_for_charger">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 5 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you worry about losing your cell phone?</label>
+                    <select class="form-control" name="worry_about_losing_phone">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 6 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you take your phone to the bathroom?</label>
+                    <select class="form-control" name="phone_in_bathroom">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 7 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you use your phone in any social gathering (parties)?</label>
+                    <select class="form-control" name="phone_in_social_gathering">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 8 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you often check your phone without any notification?</label>
+                    <select class="form-control" name="check_phone_without_notification">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 9 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you check your phone just before going to sleep/just after waking up?</label>
+                    <select class="form-control" name="phone_before_sleep">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 10 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you keep your phone right next to you while sleeping?</label>
+                    <select class="form-control" name="phone_next_to_you">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 11 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="color: white;">Do you find yourself relying on your phone when things get awkward?</label>
+                    <select class="form-control" name="yourself relying">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Field 12 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label style="color: white;">Are you on your phone while watching TV or eating food?</label>
+                  <select class="form-control" name="watching TV">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </div>
+            </div>
+            <!-- Field 12 -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label style="color: white;">Do you check emails, missed calls, texts during class time?</label>
+                <select class="form-control" name="missed calls">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </div>
+          </div>
+            <!-- Field 13 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label style="color: white;">Do you have a panic attack if you leave your phone elsewhere?</label>
+                  <select class="form-control" name="panic attack ">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </div>
+            </div>
+            <!-- Field 14 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label style="color: white;">You don't mind responding to messages or checking your phone while on date?</label>
+                  <select class="form-control" name="messages or checking ">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </div>
+            </div>
+            <!-- Field 15 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label style="color: white;">For how long do you use your phone for playing games?</label>
+                  <select class="form-control" name="playing games">
+                      <option value="1"><2 hours</option>
+                      <option value="0">>2 hours</option>
+                  </select>
+                </div>
+            </div>
+            <!-- Field 16 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label style="color: white;">Can you live a day without phone ?</label>
+                  <select class="form-control" name="without">
+                      <option value="1">Yes</option>
+                      <option value="0">No</option>
+                  </select>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="form-group">
+                <label style="color: white;">Does your phone's battery last a day?_1.0</label>
+                <select class="form-control" name="battery">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+              </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label style="color: white;">Model</label>
+              <select class="form-control" name="model">
+                  <option value="Extra Tree">Extra Tree Model</option>
+                  <option value="Stacking">Stacking Model</option>
+                  <option value="CatBoost">Cat Boost model</option>
+              </select>
+            </div>
+        </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-md-12 text-center">
+            <div class="form-group">
+                <button type="submit" class="mu-readmore-btn">Predict</button>
+            </div>
+        </div>
+    </form>
+        <br>
+        <br>
+       
+
+
+
+
+      </div>
+    </section>
+
+    <!-- end service section -->
+
+    <!-- quote section -->
+
+    
+
+    <!-- end client section -->
+
+  </div>
+  <!-- info section -->
+
+  <!-- <section class="info_section layout_padding">
+    <div class="footer_contact">
+      <div class="heading_container">
+        <h2>
+          Contact Us
+        </h2>
+      </div>
+      
+    </div>
+
+
+  </section> -->
+
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+   
+  <!-- footer section -->
+
+  <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../static/js/bootstrap.js"></script>
+
+</body>
+
+</html>

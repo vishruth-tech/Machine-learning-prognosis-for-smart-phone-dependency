@@ -1,0 +1,13 @@
+Smartphone Addiction Prediction Using Machine Learning
+*******************************************************
+Algorithm / Model Used: Stacking Classifier Model
+Accuracy Train Score:100% and Test Score: 94%.
+*******************************************************
+Algorithm / Model Used: CatBoost Classifier
+Accuracy Train Score: 99.84% and Test Score: 96.12%.
+*******************************************************
+Algorithm / Model Used: ExtraTrees Classifier
+Accuracy Train Score: 99.84% and Test Score: 100%.
+*******************************************************
+
+

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Smartphone Addiction Prediction Using Machine Learning</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../static/css/perview.css" rel="stylesheet" />
+
+  <link href="../static/css/prediction.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../static/css/responsive.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.24/jspdf.plugin.autotable.min.js"></script>
+
+
+</head>
+<style>
+body {
+  background-color: #222;
+  font-family: Arial, sans-serif;
+  color: white;
+  margin: 20px;
+}
+                
+          
+  h1 {
+      color:#141313;
+  }
+  td{
+color: #f321f3;
+}
+h1 {
+      color: #ffffff;
+    }
+
+    td {
+      color: #f321f3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #f2f2f2;
+      color: #333;
+      font-weight: bold;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+      background-color: #f1f1f1;
+    }
+</style>
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+           
+          
+          <h3>
+                   
+            <span>
+              Prediction of Smart Phone Addiction
+             
+            </span>
+          </h3>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{url_for('index')}}">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('upload')}}">Upload </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('prediction')}}">Prediction</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('performance')}}">Performance Analysis</a>
+                </li>
+              </ul>
+          
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+         
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <div>
+                      <h1>
+                   
+                        <span>Prediction of Smart Phone Addiction
+
+                        </span>
+                      </h1>
+                      <p>
+                        Result
+                      </p>
+                      <div class="btn-box">
+                         
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- about section -->
+
+  
+  <!-- end about section -->
+  <div class="body_bg layout_padding">
+
+    <!-- service section -->
+
+    <section class="service_section ">
+      <div class="container">
+        <div class="heading_container">
+          <h2 style="color: aliceblue;">
+           Your Result
+          </h2>
+        </div>
+      </div>
+      <div class="container">
+      
+        <body id="page-top">
+
+          <!-- Navigation -->
+          
+          <div class="container">
+            <center> <h1>Model used: {{ model }}</h1>
+              <h1>Whether you are addicted to phone? : {{ prediction_text }}</h1></center>
+           
+            
+  
+  
+  
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Model Used to predict:</td>
+                        <td>
+                          {{ model }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                      <td>Whether you are addicted to phone? :</td>
+                      <td>
+                        {{ prediction_text }}
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>Gender</td>
+                    <td>
+                        {% if Gender == '0' %}
+                            Male
+                        {% elif Gender == '1' %}
+                            Female
+                        {% elif Gender == '2' %}
+                            Others
+                        {% else %}
+                            Unknown
+                        {% endif %}
+                    </td>
+                </tr>
+                    <tr>
+                        <td>Phone Usage for Playing Games</td>
+                        <td>
+                            {% if For_how_long_do_you_use_your_phone_for_playing_games == '1' %}
+                                Less than 2 hours
+                            {% elif For_how_long_do_you_use_your_phone_for_playing_games == '0' %}
+                                More than 2 hours
+                            {% else %}
+                                Unknown
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Do you use your phone to click pictures of class notes</td>
+                        <td>{{'Yes'if Do_you_use_your_phone_to_click_pictures_of_class_notes == '1' else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you buy books/access books from your mobile</td>
+                        <td>{{ 'Yes' if Do_you_buy_books_access_books_from_your_mobile == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>When your phone's battery dies out, do you run for the charger</td>
+                        <td>{{ 'Yes' if When_your_phones_battery_dies_out_do_you_run_for_the_charger == "1 "else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you worry about losing your cell phone</td>
+                        <td>{{ 'Yes' if Do_you_worry_about_losing_your_cell_phone == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you take your phone to the bathroom</td>
+                        <td>{{ 'Yes' if Do_you_take_your_phone_to_the_bathroom == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you use your phone in any social gathering (parties)</td>
+                        <td>{{ 'Yes' if Do_you_use_your_phone_in_any_social_gathering_parties == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you often check your phone without any notification</td>
+                        <td>{{ 'Yes' if Do_you_often_check_your_phone_without_any_notification == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you check your phone just before going to sleep/just after waking up</td>
+                        <td>{{ 'Yes' if Do_you_check_your_phone_just_before_going_to_sleep_just_after_waking_up == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you keep your phone right next to you while sleeping</td>
+                        <td>{{ 'Yes' if Do_you_keep_your_phone_right_next_to_you_while_sleeping == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you check emails, missed calls, texts during class time</td>
+                        <td>{{ 'Yes' if Do_you_check_emails_missed_calls_texts_during_class_time == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you find yourself relying on your phone when things get awkward</td>
+                        <td>{{ 'Yes' if Do_you_find_yourself_relying_on_your_phone_when_things_get_awkward == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Are you on your phone while watching TV or eating food</td>
+                        <td>{{ 'Yes' if Are_you_on_your_phone_while_watching_TV_or_eating_food == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Do you have a panic attack if you leave your phone elsewhere</td>
+                        <td>{{ 'Yes' if Do_you_have_a_panic_attack_if_you_leave_your_phone_elsewhere == "1"else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>You don't mind responding to messages or checking your phone while on a date</td>
+                        <td>{{ 'Yes' if You_dont_mind_responding_to_messages_or_checking_your_phone_while_on_date == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Can you live a day without your phone</td>
+                        <td>{{ 'Yes' if Can_you_live_a_day_without_phone == "1" else 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Does your phone's battery last a day</td>
+                        <td>{{ 'Yes' if Does_your_phones_battery_last_a_day == "1" else 'No' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+             <center> <button style="color: blue;" class="btn btn-success btn-large" id="download-pdf">Download PDF</button></center>
+        </div>
+         
+        
+          <!-- Contact Section -->
+          
+         
+        
+          <!-- Copyright Section -->
+          <section class="copyright py-4 text-center text-white">
+            <div class="container">
+             
+            </div>
+          </section>
+        
+        
+        
+          <!-- Bootstrap core JavaScript -->
+          
+          
+        
+           
+        
+        </body>
+
+        <script>
+          document.getElementById('download-pdf').addEventListener('click', function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Get the table element
+    const table = document.getElementById("data-table");
+
+    // Use autoTable to convert the table to PDF
+    doc.autoTable({ html: table });
+
+    // Save the PDF
+    doc.save('table-data.pdf');
+  });
+        </script>
+
+
+
+      </div>
+    </section>
+
+    <!-- end service section -->
+
+    <!-- quote section -->
+
+    
+
+    <!-- end client section -->
+
+  </div>
+  <!-- info section -->
+
+  <!-- <section class="info_section layout_padding">
+    <div class="footer_contact">
+      <div class="heading_container">
+        <h2>
+          Contact Us
+        </h2>
+      </div>
+      
+    </div>
+
+
+  </section> -->
+
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+   
+  <!-- footer section -->
+
+  <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../static/js/bootstrap.js"></script>
+
+</body>
+
+</html>
